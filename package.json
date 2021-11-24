@@ -1,0 +1,33 @@
+{
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "ng": "ng",
+    "start": "ng serve -o",
+    "build": "ng build",
+    "watch": "ng build --watch --configuration development"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "-": "^0.0.1",
+    "@angular-devkit/build-angular": "^13.0.3",
+    "@angular/cli": "^13.0.3",
+    "@angular/common": "^13.0.2",
+    "@angular/compiler": "^13.0.2",
+    "@angular/core": "^13.0.2",
+    "@angular/forms": "^13.0.2",
+    "@angular/platform-browser": "^13.0.2",
+    "@angular/platform-browser-dynamic": "^13.0.2",
+    "@ngtools/webpack": "^13.0.3",
+    "bootstrap": "^5.1.3",
+    "core-js": "^3.19.1",
+    "font-awesome": "^4.7.0",
+    "jquery": "^3.6.0",
+    "rxjs": "^7.4.0",
+    "zone.js": "^0.11.4"
+  }
+}

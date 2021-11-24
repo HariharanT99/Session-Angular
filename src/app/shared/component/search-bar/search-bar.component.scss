@@ -1,0 +1,31 @@
+
+$search-input-shadow: 0 2px 2px 0 rgb(136 148 171 / 20%), 0 24px 20px -24px rgb(71 82 107 / 10%);
+
+.search-bar{
+    input{
+        border-radius: 5rem;
+        border: none;
+        box-shadow: $search-input-shadow;
+
+        &.form-control{
+            border-right: none;
+        }
+
+        &:focus{
+            color: #212529;
+            background-color: #fff;
+            border: none;
+            box-shadow: $search-input-shadow;
+        }
+    }
+
+    .search-btn{
+        border-radius: 5rem;
+        border: none;
+        box-shadow: $search-input-shadow;
+    }
+
+    .search-icon{
+        border: none;
+    }
+}

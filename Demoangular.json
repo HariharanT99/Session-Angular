@@ -1,0 +1,59 @@
+{
+    "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+    "version": 1,
+    "newProjectRoot": "projects",
+    "projects": {
+        "AppShopping": {
+            "projectType": "application",
+            "root": "",
+            "prefix": "app",
+            "sourceRoot": "src",
+            "schematics":{},
+            "architect": {
+                "build": {
+                    "builder": "@angular-devkit/build-angular:browser",
+                    "options": {
+                        "index": "src/index.html",
+                        "main": "src/main.ts",
+                        "tsConfig": "tsconfig.app.json",
+                        "inlineStyleLanguage": "scss",
+                        "assets": [
+                            "src/assets"
+                        ],
+                        "styles": [],
+                        "scripts": [],
+                        "budgets": [],
+                        "fileReplacements": []
+                    },
+                    "configurations": {
+                        "development":{
+                            "buildOptimizer": false,
+                            "optimization": false,
+                            "vendorChunk": true,
+                            "extractLicenses": false,
+                            "sourceMap": true,
+                            "namedChunks": true
+                        }
+                    }
+                },
+                "serve": {
+                    "builder": "@angular-devkit/build-angular:dev-server",
+                    "configuration": {
+                        "production": {
+                            "browserTarget": "ShoppingApp:build:production"
+                        },
+                        "development": {
+                            "browserTarget": "AppShopping:build:development"
+                        }
+                    }
+                },
+                "defaultConfiguration": "development"
+            }
+        }
+    },
+    "defaultProject":"AppShopping",
+    "cli": {
+        "analytics": true,
+        "packageManager": "npm"
+    }
+}

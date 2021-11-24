@@ -1,0 +1,16 @@
+
+<div class="form-wrapper">
+    Email
+    <input type="text" (focusout)="CheckEmailValidation($event)" class="form-control" appEmailValidation>
+    <span *ngIf="emailvalidation == 'false'" appError>Please enter the valid email address </span>
+
+    <br><hr><br>
+
+    Mobile Number
+    <input type="text" (focusout)="CheckPhoneValidation($event)" class="form-control" appPhoneValidation>
+    <span *ngIf="phoneValidation == 'false'" appError>Please enter the valid Phone address </span>
+
+    <br><hr><br>
+
+    Date
+</div>
