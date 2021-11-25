@@ -16,16 +16,21 @@ export class PhoneValidationDirective {
     }
 
     ValidatePhone(inptNumber: string){
-        const regularExpression = /^(\+\d{1,3}[- ]?)?\d{10}$/;
-        this.phoneValidation = regularExpression.test(String(inptNumber));
-
-        if(!this.phoneValidation){
-            this.element.nativeElement.style.border = "solid red 2px"; 
-            this.element.nativeElement.name = "false"
+        if(inptNumber == ""){
+            this.element.nativeElement.name = "req";
         }
         else{
-            this.element.nativeElement.style.border = "";
-            this.element.nativeElement.name = "true"
+            const regularExpression = /^(\+\d{1,3}[- ]?)?\d{10}$/;
+            this.phoneValidation = regularExpression.test(String(inptNumber));
+    
+            if(!this.phoneValidation){
+                this.element.nativeElement.style.border = "solid red 2px"; 
+                this.element.nativeElement.name = "false"
+            }
+            else{
+                this.element.nativeElement.style.border = "";
+                this.element.nativeElement.name = "true"
+            }
         }
     }
 }

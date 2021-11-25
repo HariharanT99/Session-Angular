@@ -11,6 +11,8 @@ import { EmailValidationDirective } from "./directive/email-validation.directive
 import { EmailComponent } from "./DirectiveExampleComponent/Email/email.component";
 import { ErrorDirective } from "./directive/error.directive";
 import { PhoneValidationDirective } from "./directive/phone-validation.directive";
+import { DateValidationDirective } from "./directive/date-validation.directive";
+import { DateSeperatorDirective } from "./directive/date-seperator.directive";
 
 
 
@@ -25,7 +27,9 @@ import { PhoneValidationDirective } from "./directive/phone-validation.directive
         EmailValidationDirective,
         EmailComponent,
         ErrorDirective,
-        PhoneValidationDirective
+        PhoneValidationDirective,
+        DateValidationDirective,
+        DateSeperatorDirective
     ],
     imports: [
         BrowserModule,

@@ -15,7 +15,6 @@ export class EmailComponent {
     emailvalidation = "true";
 
     CheckEmailValidation(element: any){
-        console.log(element.srcElement.name);
         this.emailvalidation = element.srcElement.name;
     }
 
@@ -25,7 +24,35 @@ export class EmailComponent {
     phoneValidation = "true";
 
     CheckPhoneValidation(element: any){
-        console.log(element.srcElement.name);
         this.phoneValidation = element.srcElement.name;
+    }
+
+    //Date Validation
+
+    dateValidation = "true";
+    inputValidation = "true";
+    lengthValidation = "true";
+    displayDate = "true";
+
+    date = '';
+
+    CheckDateValidation(element: any){
+        this.dateValidation = element.srcElement.name;
+        this.date = element.srcElement.name;
+        this.displayDate = element.srcElement.name;
+    }
+
+    CheckInput(element: any) {
+        if(element.srcElement.value.length > 8)
+        {
+            this.lengthValidation = element.srcElement.name;
+        }
+        else
+        {
+            this.inputValidation = element.srcElement.name;
+            if(element.srcElement.value.length <= 8) {
+                this.lengthValidation = "true";
+            }
+        }
     }
 }
