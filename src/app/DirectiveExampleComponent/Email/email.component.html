@@ -14,8 +14,13 @@
 
     <br><hr><br>
 
-    Date <span class="note">[*Note: DDMMYYYY]</span>
-    <input type="text" (keyup)="CheckInput($event)" (focusout)="CheckDateValidation($event)" class="form-control" appDateValidation>
+    <div class="input-group">
+        <label>Seperator<span class="note"> [*Note: '/' is a default seperator]</span></label>
+        <input type="text" [(ngModel)]="seperator" class="form-control seperator" maxlength="1">
+
+        <label>Date <span class="note">[*Note: DDMMYYYY]</span></label> 
+        <input type="text" [seperator]="seperator" (keyup)="CheckInput($event)" (focusout)="CheckDateValidation($event)" class="form-control" appDateValidation>
+    </div>
     <h6 *ngIf="dateValidation == 'false'" appError>Please enter the valid Date <span class="note">[*Note: Date must contains 8 digits]</span></h6>
     <h6 *ngIf="lengthValidation == 'false'" appError> Date must be less than 8 digit </h6>
     <h6 *ngIf="inputValidation == 'false'" appError> Date Contains only number</h6>

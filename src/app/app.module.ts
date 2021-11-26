@@ -13,6 +13,9 @@ import { ErrorDirective } from "./directive/error.directive";
 import { PhoneValidationDirective } from "./directive/phone-validation.directive";
 import { DateValidationDirective } from "./directive/date-validation.directive";
 import { DateSeperatorDirective } from "./directive/date-seperator.directive";
+import { ServiceModule } from "./ServiceExample/service.module";
+import { ServiceConsumeComponent } from "./ServiceExample/component/service-consume.component";
+import { ServiceBService } from "./ServiceExample/service/serviceB.service";
 
 
 
@@ -29,14 +32,17 @@ import { DateSeperatorDirective } from "./directive/date-seperator.directive";
         ErrorDirective,
         PhoneValidationDirective,
         DateValidationDirective,
-        DateSeperatorDirective
+        DateSeperatorDirective,
+        ServiceConsumeComponent
     ],
     imports: [
         BrowserModule,
-        FormsModule
+        FormsModule,
+        ServiceModule
     ],
     exports: [],
-    bootstrap: [AppComponent]
+    bootstrap: [AppComponent],
+    providers: [ServiceBService]
 })
 
 export class AppModule {}

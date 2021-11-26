@@ -1,4 +1,4 @@
-import { Directive, ElementRef, HostListener } from "@angular/core";
+import { Directive, ElementRef, HostListener, Input } from "@angular/core";
 
 
 @Directive({
@@ -6,12 +6,21 @@ import { Directive, ElementRef, HostListener } from "@angular/core";
 })
 
 export class DateValidationDirective {
-    constructor(private element: ElementRef) {}
+    constructor(private element: ElementRef) {
+    }
 
     dateValidation = true;
 
+    @Input() seperator: string = "";
+
+
     @HostListener('focusout') OnFocusOut() {
         // this.formatedDate = "";
+
+        if(!this.seperator){
+            this.seperator = '/';
+        }
+
         this.ValidateDate(this.element.nativeElement.value)
     }
 
@@ -41,7 +50,7 @@ export class DateValidationDirective {
             const regularExpression = /^[0-9]{8}$/;
             this.dateValidation = regularExpression.test(String(date));
 
-            if(!this.dateValidation){
+            if(!this.dateValidation || Number(date) == 0){
                 this.element.nativeElement.style.border = "solid red 2px"; 
                 this.element.nativeElement.name = "false"
             }
@@ -68,17 +77,17 @@ export class DateValidationDirective {
         mm = date.slice(2,4)
         yyyy = date.slice(4);
 
-        if(Number(dd) > 31){
+        if(Number(dd) > 31 || Number(dd) == 0){
             this.element.nativeElement.name = "dinvalid";
         }
-        else if(Number(mm) > 12){
+        else if(Number(mm) > 12 || Number(mm) == 0){
             this.element.nativeElement.name = "minvalid";
         }
         else{
             this.formatedDate.push(dd);
             this.formatedDate.push(mm);
             this.formatedDate.push(yyyy);
-            outdate = this.formatedDate.join("/")
+            outdate = this.formatedDate.join(this.seperator)
             this.element.nativeElement.name = outdate;
         }
 

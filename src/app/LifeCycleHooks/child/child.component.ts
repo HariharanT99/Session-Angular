@@ -1,14 +1,15 @@
 import { AfterContentChecked, AfterContentInit, Component, ContentChild, DoCheck, Input, OnChanges, OnDestroy, OnInit, SimpleChange, SimpleChanges, ViewChild } from "@angular/core";
+import { ServiceBService } from "src/app/ServiceExample/service/serviceB.service";
 
 @Component({
     selector: 'app-child',
-    templateUrl: './child.component.html',
+    templateUrl: './child.component.html'
 })
 
 export class ChildComponent implements OnInit, OnDestroy, OnChanges, DoCheck, AfterContentInit, AfterContentChecked{
 
     constructor() {
-        console.log("Child---------Constructor")             
+        console.log("Child---------Constructor") 
     };
 
     ngOnInit(): void{

@@ -1,0 +1,9 @@
+<h4>Service B: {{nameB}}</h4>
+
+<br>
+<input class="form-control" type="text" #inpt>
+<br>
+<button type="button" class="btn btn-primary" (click)="OnSetNameB(inpt.value)">Set</button>
+<br><br>
+<button type="button" class="btn btn-danger" (click)="OnGet()">Get</button>
+<h5>{{value}}</h5>

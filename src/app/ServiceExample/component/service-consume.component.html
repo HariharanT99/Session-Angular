@@ -1,0 +1,12 @@
+<h2>Service A: {{nameA}}</h2>
+<h3>Service B: {{nameB}}</h3>
+<br>
+
+<input type="text" class="form-control" #inpt>
+<br>
+<button class="btn btn-primary" (click)="OnSet(inpt.value)">Set</button>
+
+<br><br>
+<button class="btn btn-danger" (click)="OnGet()">Get</button>
+
+<h5>{{value}}</h5>

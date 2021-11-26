@@ -22,4 +22,18 @@
         padding: 20px;
         color: #0b0ed4;
     }
+
+    .input-group{
+        display: flex;
+        flex-direction: column;
+        
+        input{
+            max-width: 20%;
+            margin-bottom: 20px;
+        }
+
+        .seperator{
+            max-width: 5%;
+        }
+    }
 }

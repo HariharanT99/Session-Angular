@@ -36,6 +36,8 @@ export class EmailComponent {
 
     date = '';
 
+    seperator = '';
+
     CheckDateValidation(element: any){
         this.dateValidation = element.srcElement.name;
         this.date = element.srcElement.name;
