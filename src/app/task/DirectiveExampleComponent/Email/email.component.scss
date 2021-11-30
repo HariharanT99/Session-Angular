@@ -1,0 +1,53 @@
+
+
+.form-wrapper{
+    padding: 10px;
+    font-size: large;
+    font-weight: 600;
+
+    input{
+        width: 20%;
+    }
+
+    #error{
+        color: red;
+    }
+
+    .note{
+        font-size: 0.8rem;
+        color: #888;
+    }
+
+    .display-date{
+        padding: 20px;
+        color: #0b0ed4;
+    }
+
+    .input-group{
+        display: flex;
+        flex-direction: column;
+        
+        input{
+            max-width: 20%;
+            margin-bottom: 20px;
+        }
+
+        .seperator{
+            max-width: 5%;
+        }
+    }
+
+    .mobile-wrapper{
+        display: flex;
+        flex-direction: row;
+
+        .code{
+            min-width: 40%;
+            margin-left: 5px;
+        }
+
+        .number{
+            min-width: 90%;
+        }
+    }
+}

@@ -1,7 +1,40 @@
 
-.nav-wrapper {
-  background-color: aqua;
 
-  width: 100%;
+.side-nav{
+  
+  button{
+    float: 2;
+    position: fixed;
+    margin-top: 5px;
+    margin-left: 5px;
+    top: 0;
+  }
+
+  .sidenav-wrapper{
+    background-color: floralwhite;
+    padding-left: 5px;
+    // min-height: 70vh;
+    // width: 20%;
+
+    position: fixed;
+    top: 58px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10000;
+    max-width: 250px;
+  
+    
+    button{
+      position: relative;
+      margin-top: 0;
+      margin-left: auto;
+      display: block;
+      
+      &:hover{
+        color: #ffadb1;
+      }
+    }
+  }
+
 }
-

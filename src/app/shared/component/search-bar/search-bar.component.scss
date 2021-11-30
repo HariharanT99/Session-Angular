@@ -7,8 +7,21 @@ $search-input-shadow: 0 2px 2px 0 rgb(136 148 171 / 20%), 0 24px 20px -24px rgb(
         border: none;
         box-shadow: $search-input-shadow;
 
-        &.form-control{
+        &.for-control{
             border-right: none;
+            position: relative;
+            flex: 1 1 auto;
+            width: 1%;
+            min-width: 0;
+            display: block;
+            padding: 0.375rem 0.75rem;
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.5;
+            color: #212529;
+            background-color: #fff;
+            background-clip: padding-box;
+
         }
 
         &:focus{
@@ -21,11 +34,19 @@ $search-input-shadow: 0 2px 2px 0 rgb(136 148 171 / 20%), 0 24px 20px -24px rgb(
 
     .search-btn{
         border-radius: 5rem;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
         border: none;
         box-shadow: $search-input-shadow;
+        background-color: #fff;
     }
 
     .search-icon{
         border: none;
+    }
+
+    .input-grp-text{
+        margin-left: -1px;
+        padding: 1px 10px;
     }
 }

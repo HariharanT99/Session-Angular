@@ -1,0 +1,25 @@
+<form class="form-wrapper" [formGroup]="loginForm" (ngSubmit)="OnSubmit()">
+    
+    <div class="row justify-content-center">
+        <div class="col-6 col-md-4">
+            <h3>Login</h3>
+            <hr>
+            Username
+            <input class="form-control" type="text" formControlName="userName" (blur)="logValidationErrors()" />
+            <span class="help-block text-danger" *ngIf="formErrors.firstName">
+                {{formErrors.firstName}}
+            </span>
+            <br>
+
+            Password
+            <input class="form-control" type="password" formControlName="password" (blur)="logValidationErrors()">
+            <span class="help-block text-danger" *ngIf="formErrors.firstName">
+                {{formErrors.firstName}}
+            </span>
+
+            <br>
+            <button type="button" class="btn btn-danger" routerLink="user-home">Cancel</button>
+            <button class="btn btn-primary" type="submit">Submit</button>
+        </div>
+    </div>
+</form>

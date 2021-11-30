@@ -1,48 +1,53 @@
 import { NgModule } from "@angular/core";
 import { AppComponent } from "./app.component";
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { SideNavComponent } from "./layout/side-nav/side-nav.component";
 import { SearchBarComponent } from "./shared/component/search-bar/search-bar.component";
 import { HeaderComponent } from "./layout/Header/header.component";
-import { ParentComponent } from "./LifeCycleHooks/parent/parent.component";
-import { ChildComponent } from "./LifeCycleHooks/child/child.component";
-import { EmailValidationDirective } from "./directive/email-validation.directive";
-import { EmailComponent } from "./DirectiveExampleComponent/Email/email.component";
-import { ErrorDirective } from "./directive/error.directive";
-import { PhoneValidationDirective } from "./directive/phone-validation.directive";
-import { DateValidationDirective } from "./directive/date-validation.directive";
-import { DateSeperatorDirective } from "./directive/date-seperator.directive";
-import { ServiceModule } from "./ServiceExample/service.module";
-import { ServiceConsumeComponent } from "./ServiceExample/component/service-consume.component";
-import { ServiceBService } from "./ServiceExample/service/serviceB.service";
+import { AppRoutingModule } from "./app-routing.module";
+import { PageNotfoundComponent } from "./shared/component/page-not-found/page-not-found.component";
+import { TaskModule } from "./task/task.module";
+import { FlexLayoutModule } from "@angular/flex-layout";
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import { NavListComponent } from "./layout/side-nav/nav-list/nav-list.component";
+import { LayoutComponent } from "./layout/layout.component";
+import { LayoutDirective } from "./layout/layout-directive";
+import {MatButtonModule} from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon';
+import { LoginComponent } from "./auth/login/login.component";
+import { FooterComponent } from "./layout/footer/footer.component";
+
 
 
 
 @NgModule ({
     declarations: [
         AppComponent,
-        ParentComponent,
-        ChildComponent,
         SideNavComponent,
         SearchBarComponent,
         HeaderComponent,
-        EmailValidationDirective,
-        EmailComponent,
-        ErrorDirective,
-        PhoneValidationDirective,
-        DateValidationDirective,
-        DateSeperatorDirective,
-        ServiceConsumeComponent
+        PageNotfoundComponent,
+        NavListComponent,
+        LayoutComponent,
+        LayoutDirective,
+        LoginComponent,
+        FooterComponent
     ],
     imports: [
         BrowserModule,
         FormsModule,
-        ServiceModule
+        TaskModule,
+        FlexLayoutModule,
+        NoopAnimationsModule,
+        MatSidenavModule,
+        MatButtonModule,
+        MatIconModule,
+        AppRoutingModule,
+        ReactiveFormsModule
     ],
-    exports: [],
-    bootstrap: [AppComponent],
-    providers: [ServiceBService]
+    bootstrap: [AppComponent]
 })
 
 export class AppModule {}

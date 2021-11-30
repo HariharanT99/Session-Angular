@@ -7,4 +7,12 @@ import { Component } from "@angular/core";
     styleUrls: ['./header.component.scss']
 })
 
-export class HeaderComponent {}
+export class HeaderComponent {
+
+    Menu = false;
+
+    ShowMenu() {
+        this.Menu= !this.Menu;
+    }
+
+}

@@ -1,3 +1,29 @@
-<div class="nav-wrapper">
+<div class="side-nav">
+  <button
+    mat-mini-fab
+    color="basic"
+    aria-label="Example icon button with a menu icon"
+    (click)="Menu = !Menu"
+  >
+    <mat-icon>menu</mat-icon>
+  </button>
 
+  <div class="sidenav-wrapper" *ngIf="Menu">
+    <button mat-button (click)="Menu = !Menu">
+      <i class="fa fa-2x fa-times"></i>
+    </button>
+
+    <app-nav-list></app-nav-list>
+  </div>
 </div>
+
+<!-- !-- <mat-drawer-container class="sidenav-wrapper" autosize>
+    <mat-drawer #drawer class="sidenav" mode="side">
+      <app-nav-list></app-nav-list>
+    </mat-drawer>
+    <div class="sidenav-content">
+      <button type="button" mat-button-color="accent" (click)="drawer.toggle()">
+        <i class="fa fa-lg fa-bars"></i>
+      </button>
+    </div>
+</mat-drawer-container> -->
