@@ -19,6 +19,8 @@ export class LoginComponent implements OnInit {
       userName: '',
       role: ''
     }
+
+    this.authService.Logout();
   }
 
   userData: User;
@@ -84,10 +86,10 @@ export class LoginComponent implements OnInit {
         
         if(data){
           if(this.userData.role == 'user'){
-            this.router.navigate(['user-home']);
+            this.router.navigate(['user']);
           }
           else if(this.userData.role == 'admin'){
-            this.router.navigate(['admin-home']);
+            this.router.navigate(['admin']);
           }
           else{
             this.router.navigate(['login']);

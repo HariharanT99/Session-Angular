@@ -1,10 +1,9 @@
 
-$p-font-size-extra-small: 0.6rem;
-$p-font-size-tiny: 0.857rem; //12px
-$p-font-size-small: 1rem; //14px
-$p-font-size-medium: 1.142rem; // 16px
-$p-font-size-large: 1.285rem; // 18px
-$h1-font-size-small: 1.428rem; //20px
+$font-size-extra-small: 0.6rem;
+$font-size-tiny: 0.800rem; //12px
+$font-size-small: 1rem; //14px
+$font-size-medium: 1.12rem; // 16px
+$font-size-large: 1.5rem; // 18px
 
 $bold: 600;
 $extra-bold: 700;
@@ -14,5 +13,8 @@ $light: 300;
 $extra-light: 300;
 
 $cover: 100%;
+
+$secondary-text: #818181;
+
 
 $hover-cursor: pointer

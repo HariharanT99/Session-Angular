@@ -1,28 +1,40 @@
+@import '../../../styles/variables.scss';
+
 .header-wrapper{
     background-color: floralwhite;
     padding: 5px 10px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    text-align: center;
-    gap: 20px;
+    // display: flex;
+    // flex-direction: row;
+    // justify-content: space-between;
+    // align-items: center;
+    // text-align: center;
+    // gap: 20px;
     box-shadow: 2px 5px 10px #888;
     height: 10%;
 
     .nav{
-        display: flex;
-        flex-direction: row;
+        // display: flex;
+        // flex-direction: row;
         gap: 15px;
+        // align-items: center;
 
         a{
             text-decoration: none;
         }
+
+        button{
+            font-size: $font-size-large;
+        }
+
     }
 
     .brand{
         position: relative;
         top: 5px;
         margin-left: 50px;
+    }
+
+    .cart-btn{
+        margin-right: 50px;
     }
 }

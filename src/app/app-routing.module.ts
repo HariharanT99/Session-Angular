@@ -11,12 +11,12 @@ const appRoutes: Routes=[
         component: LoginComponent
     },
     {
-        path: 'user-home',
+        path: 'user',
         loadChildren:() => import('./page/user/user.module').then(m => m.UserModule),
         canActivate: [AuthGuardService]
     },
     {
-        path: 'admin-home',
+        path: 'admin',
         loadChildren:() => import('./page/admin/admin.module').then(m => m.AdminModule),
         canActivate: [AuthGuardService]
     },

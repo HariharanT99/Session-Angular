@@ -1,1 +1,25 @@
-<h1>Hello Admin : )</h1>
+<div class="logout">
+    <button mat-mini-fab  color="warn" (click)="Logout()" class="logout-btn"><i class="fa fa-sign-out"></i></button>
+</div>
+
+<div class="admin-header" fxLayout="row" fxLayoutAlign="space-between center">
+    <h1>Admin Page</h1>
+    <button type="button" mat-raised-button color="accent" routerLink="add-product" routerLinkActive="router-link-active" >Add Product</button>
+</div>
+
+<div class="content">
+    <div *ngFor="let item of prodList">
+        <mat-card class="card" fxLayout="row" fxLayoutAlign="space-between center">
+            <div class="name">
+                <h3>{{item.name}}</h3>
+                <h4>{{item.brand.name}}</h4> 
+            </div>
+            <div class="description">
+                <p>{{item.description}}</p>
+            </div>
+            <div>
+                Price: {{item.price}}
+            </div>
+        </mat-card>
+    </div>
+</div>

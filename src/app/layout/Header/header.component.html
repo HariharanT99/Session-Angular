@@ -1,16 +1,17 @@
-<div class="header-wrapper">
+<div class="header-wrapper" fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="space-between center" fxLayout.gt-xs="column">
     <!-- <button mat-mini-fab color="basic" aria-label="Example icon button with a menu icon">
         <mat-icon>menu</mat-icon>
     </button> -->
     <div class="brand">
         <h2>AppShopping</h2>
-    </div>
+    </div>          
     <app-search-bar></app-search-bar>
     <div class="cart">
         <span><i class="fa fa-cart"></i></span>
     </div>
-    <div class="nav">
-        <a routerLink="login">Login</a>
-        <a routerLink="admin-home">Admin</a>
+    <div class="nav" fxLayoutAlign="none center">
+        <!-- <button mat-fab color="primary"  class="cart-btn" routerLink="user-home/cart" aria-label="Example icon button with a delete icon">
+            <i class="fa fa-lg fa-shopping-cart"></i>
+        </button> -->
     </div>
 </div>

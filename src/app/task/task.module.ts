@@ -24,14 +24,19 @@ import { ServiceModule } from "./ServiceExample/service.module";
         DateValidationDirective,
         DateSeperatorDirective,
         EmailComponent,
-        ServiceConsumeComponent
+        ServiceConsumeComponent,
     ],
     imports: [
         ServiceModule,
         BrowserModule,
         FormsModule
     ],
-    exports: []
+    exports: [
+        ParentComponent,
+        ChildComponent,
+        ServiceConsumeComponent,
+        ServiceConsume2Component
+    ]
 })
 
 export class TaskModule {

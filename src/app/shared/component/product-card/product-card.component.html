@@ -1,0 +1,18 @@
+<mat-card class="card-wrapper">
+    <mat-card-header>
+      <mat-card-title><ng-content select="[Title]"></ng-content></mat-card-title>
+      <mat-card-subtitle><ng-content select = "[brand]"></ng-content></mat-card-subtitle>
+    </mat-card-header>
+    <ng-content select="[image]"></ng-content>
+    <mat-card-content class="content">
+      <p>
+        <ng-content select="[description]"></ng-content>
+      </p>
+    </mat-card-content>
+    <span class="price" fxLayout="row">Price: <ng-content select="[Price]"> </ng-content></span>
+    <mat-card-actions>
+      <button mat-raised-button color="accent"><mat-icon class="icon">favorite</mat-icon>Add Whishlist</button>
+      <button mat-raised-button color="primary"><i class="fa fa-lg fa-shopping-cart"> </i> Add To Cart</button>
+    </mat-card-actions>
+  </mat-card>
+  

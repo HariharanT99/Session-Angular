@@ -1,0 +1,65 @@
+$grid : 10px;
+.page-wrapper{
+    
+.logout-btn{
+    position: absolute;
+    top: 10px;
+    right: 5px;
+    float: right;
+    font-size: 1.8rem;
+}
+
+.cart-btn{
+    position: absolute;
+    top: 10px;
+    right: 50px;
+    float: right;
+    font-size: 1.5rem;   
+}
+
+.card{
+    margin: 10px;
+}
+
+@media all and (min-width: 300px) and (max-width: 700px) {
+    .content{
+        display: grid;
+        grid-template-columns: auto;
+        grid-gap: $grid;
+    }
+}
+
+@media all and (min-width: 701px) and (max-width: 900px) {
+    .content{
+        display: grid;
+        grid-template-columns: auto auto;
+        grid-gap: $grid;
+    }
+}
+
+
+@media screen and (min-width: 901px) and (max-width: 1200px) {
+    .content{
+        display: grid;
+        grid-template-columns: auto auto;
+        grid-gap: $grid;
+    }
+}
+
+@media screen and (min-width: 1201px) {
+    .content{
+        display: grid;
+        grid-template-columns: auto auto auto;
+        grid-gap: $grid;
+    }
+}
+
+}
+
+
+// @media only screen and (max-width: 890px) {
+//     .content{
+//         display: grid;
+//         grid-template-columns: auto auto;
+//     }
+// }

@@ -1,3 +1,32 @@
-<app-banner>
-    <img src="{{imagePath}}" banner-img>
-</app-banner>
+<div class="page-wrapper">
+  <div class="logout">
+    <button mat-mini-fab color="warn" (click)="Logout()" class="logout-btn">
+      <i class="fa fa-sign-out"></i>
+    </button>
+    <button
+      mat-mini-fab
+      color="primary"
+      class="cart-btn"
+      routerLink="user-home/cart"
+      aria-label="Example icon button with a delete icon"
+    >
+      <i class="fa fa-lg fa-shopping-cart"></i>
+    </button>
+  </div>
+
+  <app-banner>
+    <img src="{{ imagePath }}" banner-img />
+  </app-banner>
+
+  <div class="content">
+    <div *ngFor="let item of prodList">
+      <app-product-card class="card">
+        <h2 Title>{{ item.name }}</h2>
+        <h3 Price>{{ item.price }}</h3>
+        <h4 brand>{{ item.brand.name }}</h4>
+        <img image src="../../../../assets/image/Mobile.jpg" />
+        <p description>{{ item.description }}</p>
+      </app-product-card>
+    </div>
+  </div>
+</div>

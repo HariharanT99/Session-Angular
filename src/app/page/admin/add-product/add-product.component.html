@@ -1,0 +1,224 @@
+
+<form
+  class="form-wrapper"
+  autocomplete="off"
+  [formGroup]="productForm"
+  (ngSubmit)="onSubmit()"
+>
+  <div class="form-head" fxLayout="row" fxLayoutAlign="space-between center">
+    <h2 class="text-primary mt-0 mb-0">Product Details</h2>
+    <div class="action-button">
+      <button type="submit" mat-raised-button [disabled]="fileName == null" [disabled]="productForm.invalid" color="primary">Submit</button>  
+      <button type="button" mat-raised-button color="warn" (click)="productForm.reset()">Clear Form</button>
+    </div>
+  </div>
+
+  <hr />
+
+  <div class="row align-items-center">
+    <input
+      type="number"
+      class="form-control"
+      name="productId"
+      formControlName="productId"
+      value=""
+      hidden
+    />
+    <input
+      type="number"
+      class="form-control"
+      name="userId"
+      formControlName="createdBy"
+      value=""
+      hidden
+    />
+    <div
+      class="col-12 col-md-4 form-group"
+      [ngClass]="{ 'has-error': formErrors.name }"
+    >
+      <span class="help-block text-danger" *ngIf="formErrors.name">
+        {{ formErrors.name }}
+      </span>
+      <input
+        type="text"
+        class="form-control"
+        name="name"
+        formControlName="name"
+        (blur)="logValidationErrors()"
+      />
+      <label class="form-label" for="name">Name *</label>
+    </div>
+
+    <div
+      class="col-12 col-md-4 second-lable form-group"
+      [ngClass]="{ 'has-error': formErrors.brand }"
+    >
+      <span class="help-block text-danger" *ngIf="formErrors.brand">
+        {{ formErrors.brand }}
+      </span>
+      <select
+        class="form-select"
+        formControlName="brand"
+        (blur)="logValidationErrors()"
+      >
+        <option></option>
+        <option
+          *ngFor="let item of brandList"
+          value="{{ item.id }}"
+        >
+          {{ item.name }}
+        </option>
+      </select>
+      <label class="form-lable" for="brand">Brand *</label>
+    </div>
+  </div>
+
+  <div class="row align-items-center mt-2">
+    <div
+    class="col-12 col-md-4 form-group"
+    [ngClass]="{ 'has-error': formErrors.category }"
+  >
+    <span class="help-block text-danger" *ngIf="formErrors.category">
+      {{ formErrors.category }}
+    </span>
+    <select
+      class="form-select"
+      formControlName="category"
+      (blur)="logValidationErrors()"
+    >
+      <option></option>
+      <option
+        *ngFor="let item of categoryList"
+        value="{{ item.id }}"
+      >
+        {{ item.name }}
+      </option>
+    </select>
+    <label class="form-lable" for="category">Category *</label>
+  </div>
+    <div
+      class="col-12 col-md-4 second-lable form-group"
+      [ngClass]="{ 'has-error': formErrors.inStock }"
+    >
+      <span class="help-block text-danger" *ngIf="formErrors.inStock">
+        {{ formErrors.inStock }}
+      </span>
+      <input
+        type="number"
+        class="form-control"
+        name="stock"
+        formControlName="inStock"
+        (blur)="logValidationErrors()"
+      />
+      <label class="form-lable" for="stock">Stock *</label>
+    </div>
+  </div>
+
+  <div class="row align-items-center mt-2">
+    <div
+      class="col-12 col-md-4 form-group"
+      [ngClass]="{ 'has-error': formErrors.description }"
+    >
+      <span class="help-block text-danger" *ngIf="formErrors.description">
+        {{ formErrors.description }}
+      </span>
+      <input
+        type="text"
+        class="form-control"
+        name="description"
+        formControlName="description"
+        (blur)="logValidationErrors()"
+        appDateValidator
+      />
+      <label class="form-lable" for="description">Description *</label>
+    </div>
+    <div
+      class="col-12 col-md-4 form-group second-lable"
+      [ngClass]="{ 'has-error': formErrors.expiryOn }"
+    >
+      <span class="help-block text-danger" *ngIf="formErrors.expiryOn">
+        {{ formErrors.expiryOn }}
+      </span>
+      <span class="text-danger" *ngIf="!(dateValidation =='true')">
+        Enter the valid date
+      </span>
+      <input
+        type="date"
+        class="form-control"
+        name="expiryOn"
+        formControlName="expiryOn"
+        (blur)="logValidationErrors()"
+        appDateValidator
+        (validationMessage)="SetMessage($event)"
+      />
+      <label class="form-lable" for="expiryOn"
+        >Expiry Date *</label
+      >
+    </div>
+  </div>
+
+  <div class="row align-items-center mt-2">
+    <div
+      class="col-12 col-md-4 form-group"
+      [ngClass]="{ 'has-error': formErrors.price }"
+    >
+      <span class="help-block text-danger" *ngIf="formErrors.price">
+        {{ formErrors.price }}
+      </span>
+      <input
+        type="number"
+        class="form-control"
+        name="price"
+        formControlName="price"
+        max="10000"
+        (blur)="logValidationErrors()"
+        (keyup)="logValidationErrors()"
+      />
+      <label class="form-lable" for="price"
+        >Price *</label
+      >
+    </div>
+  </div>
+
+  <div
+    class="row align-items-center mt-2"
+    [ngClass]="{ 'has-error': formErrors.picture }"
+  >
+    <div class="col-12 col-md-4 form-group">
+      <input
+        type="file"
+        class="file-input"
+        #fileUpload
+        formControlName="picture"
+        (change)="onFileSelected($event)"
+        (blur)="logValidationErrors()"
+      />
+
+      <div class="file-upload">
+        {{ fileName || "No file uploaded yet." }}
+
+        <button
+          mat-mini-fab
+          type="button"
+          color="primary"
+          class="upload-btn btn btn-primary"
+          (click)="fileUpload.click()"
+        >
+          <i class="fa fa-paperclip"></i>
+        </button>
+      </div>
+      <label class="form-lable" for="picture">Picture *</label>
+    </div>
+  </div>
+  <span class="help-block text-danger" *ngIf="formErrors.picture">
+    {{ formErrors.picture }}
+  </span>
+  <span class="text-danger" *ngIf="!(validation == 'true')">File type is not allowed</span>
+  
+
+  <br />
+  <!-- <div class="action-btn">
+    <button type="button" mat-raised-button color="warn" (click)="productForm.reset()">Clear Form</button>
+    <button type="submit" mat-raised-button [disabled]="fileName == null" [disabled]="productForm.invalid" color="primary">Submit</button>
+  </div> -->
+</form>
