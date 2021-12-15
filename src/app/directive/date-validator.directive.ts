@@ -13,14 +13,14 @@ export class DateValidatorDirective {
     @Output() validationMessage = new EventEmitter<string>();
 
     @HostListener('change') OnChange(){
-        console.log("host")
         this.CheckDate(this.element.nativeElement.value)
     }
 
     CheckDate(input: Date){
         let dateTime = new Date()
         let date = new Date(input);
-        console.log(date);
+        console.log("is "+date);
+        console.log("out "+ dateTime)
         if(dateTime.getDate() > date.getDate()){
             this.validationMessage.emit("false")
         }

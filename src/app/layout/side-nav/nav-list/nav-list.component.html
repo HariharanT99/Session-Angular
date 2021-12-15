@@ -1,5 +1,6 @@
 <ul class="navlist-wrapper">
-    <li class="navitem"><a routerLink="/">Home</a></li>
-    <li class="navitem">Shop By Category</li>
+    <li class="navitem"><a routerLink="/" routerLinkActive="active">Home</a></li>
+    <li class="navitem" *ngIf="UserRole == 'User'"><a routerLink="/user/shopcategory" routerLinkActive="active">Shop By Category</a></li>
     <li class="navitem">Account</li>
+    <li class="navitem"><button mat-button color="primary" class="toggle-btn" (click)="navService.SetNav()">Toggle Navbar</button></li>
 </ul>

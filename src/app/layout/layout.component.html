@@ -1,7 +1,9 @@
 <div class="layout-wrapper">
     <app-header></app-header>
-    <app-side-nav></app-side-nav>
-
+    <app-side-nav *ngIf="navService.showNav;else elsetemplate"></app-side-nav>
+    <ng-template #elsetemplate>
+        <app-top-nav></app-top-nav>
+    </ng-template>
     <ng-content select= '[outlet]' class="content"></ng-content>
 
     <app-footer></app-footer>

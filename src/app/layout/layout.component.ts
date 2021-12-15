@@ -1,4 +1,5 @@
 import { Component, Input } from "@angular/core";
+import { NavbarService } from "./service/navbar.service";
 
 @Component({
     selector: 'app-layout',
@@ -6,4 +7,13 @@ import { Component, Input } from "@angular/core";
     styleUrls: ['./layout.component.scss']
 })
 
-export class LayoutComponent {}
+export class LayoutComponent {
+
+    constructor
+    (
+        public navService: NavbarService
+    ) 
+    {
+            
+    }
+}

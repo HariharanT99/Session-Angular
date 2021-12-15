@@ -21,6 +21,24 @@ export class ApiEndpointService{
     public getProduct = (): string =>
     this.createUrl(this.path.GetProduct)
 
+    public getProductByCategory = (catId: number): string =>
+    this.createUrl(`${this.path.GetProductByCategory}/?id=${catId}`)
+
+    public getProductByName = (name: string): string =>
+    this.createUrl(`${this.path.GetProductByName}/?name=${name}`)
+
+    public getNavbar = (): string => 
+    this.createUrl(this.path.GetNavbar)
+
+    public setNavbar = (): string =>
+    this.createUrl(`${this.path.UpdateNavbar}`)
+
+    public login = (): string =>
+    this.createUrl(this.path.Login)
+
+    public getImage = (): string =>
+    this.createUrl(this.path.GetImage)
+
 
     private createUrl = (action: string): string => {
     return this.path.base_URL + action;

@@ -1,4 +1,6 @@
 import { Component } from "@angular/core";
+import { json } from "@rxweb/reactive-form-validators";
+import { NavbarService } from "../../service/navbar.service";
 
 
 @Component({
@@ -7,4 +9,16 @@ import { Component } from "@angular/core";
     styleUrls:['./nav-list.component.scss']
 })
 
-export class NavListComponent {}
+export class NavListComponent {
+
+    constructor
+    (
+        public navService: NavbarService
+    ) 
+    {
+        this.UserRole =  localStorage.getItem('UserRole') || '';
+    }
+
+    UserRole = '';
+
+}

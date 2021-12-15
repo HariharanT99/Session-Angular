@@ -1,0 +1,75 @@
+@import '../../../../styles/variables.scss';
+
+
+.navlist-wrapper{
+    list-style: none;
+    padding: 0;
+    padding-left: 2px;
+    display: flex;
+
+    .navitem{
+        font-size: $font-size-medium;
+        line-height: 3rem;
+        padding: 5px 15px;
+        border-radius: 30px;
+
+        &:hover{
+            background-color: #ffadb1;
+            color: #fff;
+            cursor: $hover-cursor;
+        }
+
+        a{
+            text-decoration: none;
+            color: inherit;
+
+            &:active{
+                font-weight: $extra-bold;
+            }
+        }
+
+
+        // li{
+            
+        //     &::before{
+        //         content: '';
+        //         position: absolute;
+        //         right: 0;
+        //         top: -50px;
+        //         width: 50px;
+        //         height: 50px;
+        //         background-color: red;
+        //         border-radius: 50%;
+        //         box-shadow: 35px 35px 0 10px var(--white);
+        //     }
+        // }
+        
+    }
+
+    .navitem1{
+        font-size: $font-size-medium;
+        line-height: 3rem;
+        padding: 5px 15px;
+        border-radius: 30px;
+
+        a{
+            text-decoration: none;
+            color: inherit;
+
+            &:active{
+                font-weight: $extra-bold;
+            }
+        }
+
+        .toggle-btn{
+            position: absolute;
+            float: right;
+            right: 0;
+
+            &:hover{
+                background-color: none;
+            }
+        }
+        
+    }
+}

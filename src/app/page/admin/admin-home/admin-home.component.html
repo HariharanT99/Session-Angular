@@ -1,25 +1,80 @@
 <div class="logout">
-    <button mat-mini-fab  color="warn" (click)="Logout()" class="logout-btn"><i class="fa fa-sign-out"></i></button>
+  <button mat-mini-fab color="warn" (click)="Logout()" class="logout-btn">
+    <i class="fa fa-sign-out"></i>
+  </button>
 </div>
 
-<div class="admin-header" fxLayout="row" fxLayoutAlign="space-between center">
-    <h1>Admin Page</h1>
-    <button type="button" mat-raised-button color="accent" routerLink="add-product" routerLinkActive="router-link-active" >Add Product</button>
+<div class="admin-header" fxLayout="row" fxLayoutAlign="end center">
+  <button
+    type="button"
+    class="add-btn"
+    mat-raised-button
+    color="accent"
+    routerLink="add-product"
+    routerLinkActive="router-link-active"
+  >
+    Add Product
+  </button>
 </div>
 
 <div class="content">
-    <div *ngFor="let item of prodList">
-        <mat-card class="card" fxLayout="row" fxLayoutAlign="space-between center">
-            <div class="name">
-                <h3>{{item.name}}</h3>
-                <h4>{{item.brand.name}}</h4> 
+  <div *ngFor="let item of service.prodList">
+    <!-- <button class="btn w-100" (click)="GetPic(picver.value)"> -->
+    <mat-card class="card" fxLayout="row" fxLayoutAlign="space-between center">
+      <div class="name">
+        <h3>{{ item.name }}</h3>
+        <h4>{{ item.brand.name }}</h4>
+        <div class="hidden-image" *ngFor="let pic of item.pictures">
+          <input hidden value="{{ pic.version }}" #path />
+          <button
+            mat-button
+            color="warn"
+            (click)="GetPic(path.value, item.brand.name, item.category.name)"
+            data-bs-toggle="modal"
+            data-bs-target="#imgModal"
+          >
+            View Image
+          </button>
+
+          <!-- Modal -->
+          <div
+            class="modal fade"
+            id="imgModal"
+            tabindex="-1"
+            aria-labelledby="imgModalLabel"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog modal-md">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="imgModalLabel">{{pic.name}}</h5>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  ></button>
+                </div>
+                <div class="modal-body" fxLayoutAlign="center center"><img class="img" [src]='image'></div>
+                <div class="modal-footer">
+                  <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-bs-dismiss="modal"
+                  >
+                    Close
+                  </button>
+                </div>
+              </div>
             </div>
-            <div class="description">
-                <p>{{item.description}}</p>
-            </div>
-            <div>
-                Price: {{item.price}}
-            </div>
-        </mat-card>
-    </div>
+          </div>
+        </div>
+      </div>
+      <div class="description">
+        <p>{{ item.description }}</p>
+      </div>
+      <div>Price: {{ item.price }}</div>
+    </mat-card>
+    <!-- </button> -->
+  </div>
 </div>

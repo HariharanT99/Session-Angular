@@ -1,5 +1,7 @@
+import { Byte } from "@angular/compiler/src/util";
 import { Brand } from "./brand";
 import { Category } from "./category"
+import { Picture } from "./picture";
 
 export interface UserProduct{
     id: number,
@@ -11,5 +13,6 @@ export interface UserProduct{
     inStock: number,
     description: string,
     price: number,
-    image: string,
+    pictures: Picture[],
+    images: Byte[],
 }

@@ -12,21 +12,27 @@
     >
       <i class="fa fa-lg fa-shopping-cart"></i>
     </button>
+    <!-- <button class="cat-btn " mat-flat-button color="primary">Shop By Category</button> -->
   </div>
 
   <app-banner>
     <img src="{{ imagePath }}" banner-img />
   </app-banner>
 
-  <div class="content">
-    <div *ngFor="let item of prodList">
+  <div class="content" *ngIf="search.prodList.length != 0; else elseBlock">
+    <div *ngFor="let item of search.prodList">
       <app-product-card class="card">
         <h2 Title>{{ item.name }}</h2>
         <h3 Price>{{ item.price }}</h3>
         <h4 brand>{{ item.brand.name }}</h4>
-        <img image src="../../../../assets/image/Mobile.jpg" />
+        <!-- <img hidden src="{{search.FetchImage(item.brand.name, item.category.name, item.pictures[0])}}"> -->
+        <img image alt="Poduct" height="300" width="500" class='img' src='https://localhost:44396/api/Product/GetPic?id={{item.id}}' />
         <p description>{{ item.description }}</p>
       </app-product-card>
     </div>
   </div>
+
+  <ng-template #elseBlock>
+    <app-no-data></app-no-data>
+  </ng-template>
 </div>

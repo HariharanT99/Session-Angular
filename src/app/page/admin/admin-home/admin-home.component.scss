@@ -6,11 +6,20 @@
     font-size: 1.8rem;
 }
 
+.add-btn{
+    margin: 5px;
+}
+
 
 .content{
     
     .card{
         margin: 5px 20px;
         background-color: ivory;
+    }
+
+    .img{
+        height: 300px;
+        width: 300px;
     }
 }

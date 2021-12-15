@@ -26,6 +26,7 @@
     "@angular/platform-browser": "^13.0.2",
     "@angular/platform-browser-dynamic": "^13.0.2",
     "@angular/router": "^13.0.2",
+    "@auth0/angular-jwt": "^5.0.2",
     "@ngtools/webpack": "^13.0.3",
     "@rxweb/reactive-form-validators": "^2.1.6",
     "bootstrap": "^5.1.3",

@@ -4,6 +4,7 @@ import { MatButtonModule } from "@angular/material/button";
 import { MatCardModule } from "@angular/material/card";
 import { MatIconModule } from "@angular/material/icon";
 import { BannerComponent } from "./component/banner/banner.component";
+import { NoDataComponent } from "./component/no-data/no-data.component";
 import { ProductCardComponent } from "./component/product-card/product-card.component";
 import { SearchBarComponent } from "./component/search-bar/search-bar.component";
 
@@ -12,7 +13,8 @@ import { SearchBarComponent } from "./component/search-bar/search-bar.component"
     declarations:[
         ProductCardComponent,
         SearchBarComponent,
-        BannerComponent
+        BannerComponent,
+        NoDataComponent
     ],
     imports:[
         MatCardModule,
@@ -24,6 +26,7 @@ import { SearchBarComponent } from "./component/search-bar/search-bar.component"
         ProductCardComponent,
         BannerComponent,
         SearchBarComponent,
+        NoDataComponent,
         FlexLayoutModule,
         MatButtonModule,
         MatCardModule

@@ -1,6 +1,9 @@
 <form class="form-wrapper" [formGroup]="loginForm" (ngSubmit)="OnSubmit()">
+
     
     <div class="row justify-content-center">
+        <h3 class="has-error" *ngIf="this.authService.invalidLogin">Invalid user or password</h3>
+
         <div class="col-6 col-md-4">
             <h3>Login</h3>
             <hr>

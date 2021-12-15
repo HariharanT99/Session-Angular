@@ -11,5 +11,14 @@ export class Action{
     public readonly PostProduct = 'Product/PostProduct';
     public readonly GetBrand = 'Product/GetBrand';
     public readonly GetCategory = 'Product/GetCategory';
-    public readonly GetProduct = 'Product/GetProduct'
+    public readonly GetProduct = 'Product/GetProduct';
+    public readonly GetProductByCategory = 'Product/GetProductByCategory';
+    public readonly GetProductByName = 'Product/GetProductByName';
+    public readonly GetNavbar = 'Navbar/GetNavbar';
+    public readonly UpdateNavbar = 'Navbar/UpdateNavbar';
+    public readonly GetImage = 'Product/GetImage';
+
+
+
+    public readonly Login = 'Account/Login';
 }

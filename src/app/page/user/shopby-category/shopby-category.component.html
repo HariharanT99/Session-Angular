@@ -1,0 +1,33 @@
+<div class="page-wrapper">
+  <div class="header" fxLayout.xs="column" fxLayout="row" fxLayoutGap="2%" fxLayoutAlign="none center">
+    <h2>Category</h2>
+    <mat-form-field appearance="fill">
+      <mat-label>Category</mat-label>
+      <mat-select (valueChange)="search.GetProductByCat(cat.value)" #cat>
+        <mat-option>None</mat-option>
+        <mat-option
+          *ngFor="let category of search.categoryList"
+          [value]="category.id"
+          >{{ category.name }}</mat-option
+        >
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div class="content" *ngIf="search.prodList.length != 0; else elseBlock">
+    <div *ngFor="let item of search.prodList">
+      <app-product-card class="card">
+        <h2 Title>{{ item.name }}</h2>
+        <h3 Price>{{ item.price }}</h3>
+        <h4 brand>{{ item.brand.name }}</h4>
+        <!-- <img hidden src="{{ getImage(item.images) }}" /> -->
+        <img image alt="Poduct" height="300" width="500" class='img' src='https://localhost:44396/api/Product/GetPic?id={{item.id}}' />
+        <p description>{{ item.description }}</p>
+      </app-product-card>
+    </div>
+</div>
+  
+  <ng-template #elseBlock>
+    <app-no-data></app-no-data>
+  </ng-template>
+</div>

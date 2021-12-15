@@ -13,8 +13,8 @@ export class HttpService {
     public get = (url: string, options?: any): Observable<any> =>
     this.http.get(url, options);
 
-    public post = (url: string, options?: any,  body?: any,): Observable<any> =>
-    this.http.post(url, body, options);
+    public post = (url: string, body?: any, options?: any): Observable<any> =>
+    this.http.post<any>(url, body, options);
   
     public put = (url: string, options?: any, body?: any): Observable<any> =>
     this.http.put(url, options, body);

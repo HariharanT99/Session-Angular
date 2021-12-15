@@ -1,4 +1,5 @@
 import { Component } from "@angular/core";
+import { SearchService } from "src/app/page/user/service/search.service";
 
 
 @Component({
@@ -9,12 +10,16 @@ import { Component } from "@angular/core";
 
 export class HeaderComponent {
 
-    constructor (){
+    constructor 
+    (
+        public search: SearchService
+    ){
 
     }
 
-
     Menu = false;
+
+
 
     ShowMenu() {
         this.Menu= !this.Menu;

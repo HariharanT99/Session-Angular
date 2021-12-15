@@ -1,10 +1,14 @@
 
 
 .form-wrapper{
-    min-height: 77vh;
+    min-height: 80.5vh;
 
     .row{
         margin: 0;
         margin-top: 10px;
+    }
+
+    .has-error{
+        color: red;
     }
 }

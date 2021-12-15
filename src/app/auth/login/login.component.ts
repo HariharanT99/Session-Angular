@@ -10,8 +10,10 @@ import { AuthService } from "../auth.service";
   styleUrls: ["./login.component.scss"]
 })
 export class LoginComponent implements OnInit {
-  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {
+  constructor(private fb: FormBuilder, public authService: AuthService, private router: Router) {
     this.user = {userName: '', password: ''};
+
+    this.authService.invalidLogin = false;
 
     this.userData = {
       id: 0,
@@ -75,27 +77,30 @@ export class LoginComponent implements OnInit {
   user: {userName: string, password: string};
 
   OnSubmit(){
-    this.user = {userName: this.loginForm.get('userName')?.value, password: this.loginForm.get('password')?.value}
+    this.authService.Login(this.loginForm.get('userName')?.value, this.loginForm.get('password')?.value);
 
-    if(this.user){
-      this.authService.Login(this.user.userName,this.user.password)
-      .subscribe(data => {
-        console.log("Is Login Success: "+ data);
+    // this.user = {userName: this.loginForm.get('userName')?.value, password: this.loginForm.get('password')?.value}
 
-        this.authService.Users.map(d => (d.userName == this.user.userName)? this.userData=d : '')
+    // if(this.user){
+      
+    //   this.authService.Login(this.user.userName,this.user.password);
+      // .subscribe(data => {
+      //   console.log("Is Login Success: "+ data);
+
+      //   this.authService.Users.map(d => (d.userName == this.user.userName)? this.userData=d : '')
         
-        if(data){
-          if(this.userData.role == 'user'){
-            this.router.navigate(['user']);
-          }
-          else if(this.userData.role == 'admin'){
-            this.router.navigate(['admin']);
-          }
-          else{
-            this.router.navigate(['login']);
-          }
-        } 
-      })
-    }
+      //   if(data){
+      //     if(this.userData.role == 'user'){
+      //       this.router.navigate(['user']);
+      //     }
+      //     else if(this.userData.role == 'admin'){
+      //       this.router.navigate(['admin']);
+      //     }
+      //     else{
+      //       this.router.navigate(['login']);
+      //     }
+      //   } 
+      // })
+    // }
   }
 }

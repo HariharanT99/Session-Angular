@@ -1,6 +1,6 @@
 <div class="search-bar">
     <div class="input-group">
-        <input type="text" class="for-control" placeholder="Search">
-        <button class="search-btn"><span class="input-grp-text search-icon"><i class="fa fa-search"></i></span></button>
+        <input type="text" class="for-control" placeholder="Search" #srch>
+        <button class="search-btn" (click)="EmitSearch(srch.value)"><span class="input-grp-text search-icon"><i class="fa fa-search"></i></span></button>
     </div>
 </div>

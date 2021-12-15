@@ -1,10 +1,11 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnDestroy, OnInit } from "@angular/core";
 import { Form, FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { ApiEndpointService } from "src/app/api-service/http.endpoint";
 import { HttpService } from "src/app/api-service/http.service";
 import { Brand } from "src/app/model/brand";
 import { Category } from "src/app/model/category";
 import { RxwebValidators } from '@rxweb/reactive-form-validators';
+import { Subscription } from "rxjs";
 
 
 
@@ -14,14 +15,22 @@ import { RxwebValidators } from '@rxweb/reactive-form-validators';
     styleUrls: ['./add-product.component.scss']
 })
 
-export class AddProductComponent implements OnInit{
+export class AddProductComponent implements OnInit, OnDestroy{
     
   constructor(
     private fb: FormBuilder,
     private apiEndPointService: ApiEndpointService,
     private httpService: HttpService
-    ) { 
+    ) 
+    { 
       this.formData = new FormData();
+
+      this.token = localStorage.getItem('jwt');  
+
+      this.categorySubscription = new Subscription;
+      this.brandSubscription = new Subscription;
+      this.postSubscription = new Subscription;
+
     }
 
 
@@ -35,7 +44,7 @@ export class AddProductComponent implements OnInit{
 
 
 
-    productForm: FormGroup=new FormGroup({});
+  productForm: FormGroup = new FormGroup({});
 
   fileName = '';
 
@@ -80,7 +89,7 @@ export class AddProductComponent implements OnInit{
     },
     'price':{
         'required':'Price is required.',
-        'max': 'Price must be less than 10000'
+        'max': 'Price must be less than 1 lakh'
     },
     'picture':{
         'required': 'Please Upload the picture',
@@ -92,8 +101,11 @@ export class AddProductComponent implements OnInit{
 
   ngOnInit(): void {
 
-    this.getBrand();
-    this.getCategory();
+
+
+    this.GetBrand();
+    this.GetCategory();
+
 
     this.productForm = this.fb.group({
       productId:[0],
@@ -103,15 +115,13 @@ export class AddProductComponent implements OnInit{
       inStock: ['', [Validators.required, Validators.max(10000)]],
       description: ['', [Validators.required, Validators.maxLength(150)]],
       expiryOn: ['', Validators.required],
-      price: ['', Validators.required,Validators.max(10000)],
-      createdBy: ['9C25E902-48F2-4D24-3490-08D9B63E75B3'],
-      isActive: [true],
-      picture: [null, [RxwebValidators.extension({extensions:["jpeg","gif","jpg", "png","tiff","pbg"]}), RxwebValidators.requiredTrue]]
+      price: ['', [Validators.required,Validators.max(100000)]],
+      picture: ['', Validators.required]
     });
 
     //when the form value changes, logValidationErrors fuction is called
     this.productForm.valueChanges.subscribe((data) => {
-      this.logValidationErrors();
+      this.logValidationErrors(this.productForm);
     })
 
   }
@@ -157,32 +167,65 @@ export class AddProductComponent implements OnInit{
     }
   }
 
+
+  postSubscription: Subscription;
+  token: any;
   onSubmit(): void {
     console.log('On submit');
 
-    this.SetFormData();
+    debugger
 
-    this.httpService.post(this.apiEndPointService.PostProduct(), {}, this.formData).subscribe((res) => {
-      this.productForm.reset();
-      alert("Product added succesfully");
-    });
+    this.SetFormData(this.token);
+
+    this.postSubscription = this.httpService.post(this.apiEndPointService.PostProduct(), this.formData).subscribe({
+      next: respose => {
+        console.log(respose);
+        this.productForm.reset();
+        this.fileName = '';
+        alert("Product added succesfully");
+      },
+      error: () => {
+        alert("product submission failed");
+      }
+    })
+
+    // this.httpService.post(this.apiEndPointService.PostProduct(), this.formData, {}).subscribe((res) => {
+    //   console.log(res);
+    //   this.productForm.reset();
+    //   this.fileName = '';
+    //   alert("Product added succesfully");
+    // });
   }
 
-  getBrand(){
+
+  brandSubscription: Subscription;
+
+  GetBrand(){
     this.httpService.get(this.apiEndPointService.getBrand())
     .subscribe((data) => {
       this.brandList.push(...data);
     })
   };
 
-  getCategory(){
+  categorySubscription: Subscription;
+
+  GetCategory(){
     this.httpService.get(this.apiEndPointService.getCategory())
     .subscribe((data) => {
       this.categoryList.push(...data);
     })
   }
 
-  SetFormData(){
+  SetFormData(token: string){
+
+    let jwtData = token.split('.')[1]
+    let decodedJwtJsonData = window.atob(jwtData)
+    let decodedJwtData = JSON.parse(decodedJwtJsonData)
+
+    var id = decodedJwtData.nameid;
+
+    console.log(id);
+
     this.formData.append('Name', this.productForm.value.name);
     this.formData.append('BrandId', this.productForm.value.brand);
     this.formData.append('CategoryId', this.productForm.value.category);
@@ -190,9 +233,8 @@ export class AddProductComponent implements OnInit{
     this.formData.append('Description', this.productForm.value.description);
     this.formData.append('ExpiryOn', this.productForm.value.expiryOn);
     this.formData.append('Price', this.productForm.value.price);
-    this.formData.append('CreatedBy', this.productForm.value.createdBy);
-    this.formData.append('IsActive', this.productForm.value.isActive);
-    this.formData.append('file', this.productForm.value.picture);
+    this.formData.append('CreatedBy', id);
+    this.formData.append('File', this.productForm.value.picture);
 
     console.log(this.formData.getAll);
   }
@@ -202,6 +244,17 @@ export class AddProductComponent implements OnInit{
   SetMessage(msg: string){
     console.log(msg)
     this.dateValidation = msg;
+  }
+
+  Reset(){
+    this.productForm.reset();
+    this.fileName = '';
+  }
+
+  ngOnDestroy(){
+    this.postSubscription.unsubscribe();
+    this.brandSubscription.unsubscribe();
+    this.categorySubscription.unsubscribe();
   }
 
 }

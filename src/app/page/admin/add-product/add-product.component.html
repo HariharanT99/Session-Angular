@@ -9,7 +9,7 @@
     <h2 class="text-primary mt-0 mb-0">Product Details</h2>
     <div class="action-button">
       <button type="submit" mat-raised-button [disabled]="fileName == null" [disabled]="productForm.invalid" color="primary">Submit</button>  
-      <button type="button" mat-raised-button color="warn" (click)="productForm.reset()">Clear Form</button>
+      <button type="button" mat-raised-button color="warn" (click)="Reset()">Clear Form</button>
     </div>
   </div>
 
@@ -21,14 +21,6 @@
       class="form-control"
       name="productId"
       formControlName="productId"
-      value=""
-      hidden
-    />
-    <input
-      type="number"
-      class="form-control"
-      name="userId"
-      formControlName="createdBy"
       value=""
       hidden
     />
@@ -128,7 +120,6 @@
         name="description"
         formControlName="description"
         (blur)="logValidationErrors()"
-        appDateValidator
       />
       <label class="form-lable" for="description">Description *</label>
     </div>
